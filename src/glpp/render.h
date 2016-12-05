@@ -19,7 +19,7 @@ public:
 	virtual ~Render();
 
 	bool isStopped() const;
-	void render(ProgramPtr program);
+	void render();
 
 private:
 	void setupCallbacks();
@@ -29,7 +29,7 @@ private:
 	static void mouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 
 private:
-	virtual void doRender(ProgramPtr program) = 0;
+	virtual void doRender() = 0;
 
 	virtual void onKeyPressed(int key, int scancode, int action, int mode) = 0;
 	virtual void onMouseMoved(double xpos, double ypos) = 0;

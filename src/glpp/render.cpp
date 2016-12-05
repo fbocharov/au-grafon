@@ -43,10 +43,9 @@ bool Render::isStopped() const
 	return glfwWindowShouldClose(m_window);
 }
 
-void Render::render(ProgramPtr program)
+void Render::render()
 {
-	glUseProgram(*program);
-	doRender(program);
+	doRender();
 	glfwSwapBuffers(m_window);
 	glfwPollEvents();
 }
