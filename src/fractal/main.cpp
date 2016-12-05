@@ -10,7 +10,7 @@
 
 int main()
 {
-	auto render = std::make_unique<FractalRender>(800, 600, "textures/mandelbrot.png");
+	auto render = std::make_shared<FractalRender>(800, 600, "textures/mandelbrot.png");
 	auto program = std::make_shared<glpp::Program>(std::vector<glpp::ShaderPtr>{
 		{ std::make_shared<glpp::Shader>(GL_VERTEX_SHADER, "shaders/mandelbrot.vert") },
 		{ std::make_shared<glpp::Shader>(GL_FRAGMENT_SHADER, "shaders/mandelbrot.frag") }
