@@ -2,6 +2,7 @@
 #define FRACTAL_RENDER_H
 
 #include <glpp/render.h>
+#include <glpp/texture.h>
 
 #include <glm/vec2.hpp>
 
@@ -26,7 +27,7 @@ private:
 	glpp::ProgramPtr m_program;
 
 	GLuint m_vao;
-	GLuint m_texture;
+	glpp::Texture m_texture;
 
 	glm::vec2 m_camera = glm::vec2(-1.5, -1.0);
 	float m_zoom = 2.0;

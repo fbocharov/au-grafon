@@ -17,27 +17,11 @@ constexpr GLfloat VERTICES[] =
 	 1.0f,	-1.0f,	0.0f
 };
 
-
-inline GLuint loadTexture1D(GLchar const* path)
-{
-	//Generate texture ID and load texture data
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-	int width, height;
-	unsigned char* image = SOIL_load_image(path, &width, &height, 0, SOIL_LOAD_RGB);
-	// Assign texture to ID
-	glBindTexture(GL_TEXTURE_1D, textureID);
-	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, width, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_1D);
-	glBindTexture(GL_TEXTURE_1D, 0);
-	SOIL_free_image_data(image);
-	return textureID;
-}
-
 }	// namespace
 
 FractalRender::FractalRender(int width, int height, std::string const & texturePath)
 	: glpp::Render(width, height, "Mandelbrot set")
+	, m_texture(glpp::Texture::load1D(texturePath))
 	, m_screenDimension(width, height)
 {
 	glGenVertexArrays(1, &m_vao);
@@ -52,8 +36,6 @@ FractalRender::FractalRender(int width, int height, std::string const & textureP
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
 
 	glBindVertexArray(0);
-
-	m_texture = loadTexture1D(texturePath.c_str());
 }
 
 void FractalRender::setProgram(glpp::ProgramPtr program)
