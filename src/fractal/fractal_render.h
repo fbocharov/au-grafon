@@ -12,6 +12,7 @@ class FractalRender : public glpp::Render
 {
 public:
 	FractalRender(int width, int height, std::string const & texturePath);
+	~FractalRender();
 
 	void setProgram(glpp::ProgramPtr program);
 

@@ -38,6 +38,12 @@ FractalRender::FractalRender(int width, int height, std::string const & textureP
 	glBindVertexArray(0);
 }
 
+FractalRender::~FractalRender()
+{
+	glDeleteVertexArrays(1, &m_vao);
+}
+
+
 void FractalRender::setProgram(glpp::ProgramPtr program)
 {
 	m_program = program;
