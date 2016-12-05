@@ -2,11 +2,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <iostream>
-
 namespace glpp
 {
-
 
 Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch)
 	: m_pos(position)
@@ -31,7 +28,6 @@ GLfloat Camera::getZoom() const
 {
 	return m_zoom;
 }
-
 
 void Camera::move(Direction direction, GLfloat timeDelta)
 {

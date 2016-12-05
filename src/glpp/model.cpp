@@ -21,17 +21,6 @@
 namespace glpp
 {
 
-namespace
-{
-
-std::map<aiTextureType, std::string> const TYPE_NAMES = {
-	{ aiTextureType_DIFFUSE, "texture_diffuse" },
-	{ aiTextureType_SPECULAR, "texture_specular" },
-	{ aiTextureType_AMBIENT, "texture_reflection" }
-};
-
-}	// namespace
-
 Model::Model(std::string const & path)
 {
 	Assimp::Importer importer;
