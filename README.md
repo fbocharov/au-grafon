@@ -9,3 +9,4 @@ All applications using OpenGL 3.3. To build and run them one should have install
 * ```freeglut3-dev```
 * ```libsoil-dev```
 * ```libglfw3-dev```
+* ```libsoil-dev```
