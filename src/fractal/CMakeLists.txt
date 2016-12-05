@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 project(fractal)
 
-file(GLOB_RECURSE SOURCES "*.cpp" "*.h" "*.glsl")
+file(GLOB_RECURSE SOURCES "*.cpp" "*.h" "*.vert" "*.frag")
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
