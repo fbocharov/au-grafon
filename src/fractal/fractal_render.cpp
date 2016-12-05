@@ -56,13 +56,20 @@ FractalRender::FractalRender(int width, int height, std::string const & textureP
 	m_texture = loadTexture1D(texturePath.c_str());
 }
 
-
-void FractalRender::doRender(glpp::ProgramPtr program)
+void FractalRender::setProgram(glpp::ProgramPtr program)
 {
-	program->setUniform("camera", { m_camera.x, m_camera.y });
-	program->setUniform("zoom",   { m_zoom } );
-	program->setUniform("screen", { m_screenDimension.x, m_screenDimension.y });
-	program->setUniform("maxIterCount", { float(m_maxIters) });
+	m_program = program;
+}
+
+
+void FractalRender::doRender()
+{
+	glUseProgram(*m_program);
+
+	m_program->setUniform("camera", { m_camera.x, m_camera.y });
+	m_program->setUniform("zoom",   { m_zoom } );
+	m_program->setUniform("screen", { m_screenDimension.x, m_screenDimension.y });
+	m_program->setUniform("maxIterCount", { float(m_maxIters) });
 
 	glBindTexture(GL_TEXTURE_1D, m_texture);
 	glBindVertexArray(m_vao);

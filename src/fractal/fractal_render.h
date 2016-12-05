@@ -12,8 +12,10 @@ class FractalRender : public glpp::Render
 public:
 	FractalRender(int width, int height, std::string const & texturePath);
 
+	void setProgram(glpp::ProgramPtr program);
+
 private:
-	void doRender(glpp::ProgramPtr program) override;
+	void doRender() override;
 
 	void onKeyPressed(int key, int scancode, int action, int mode) override;
 	void onMouseMoved(double xpos, double ypos) override;
@@ -21,6 +23,8 @@ private:
 	void onMouseScroll(double xoff, double yoff) override;
 
 private:
+	glpp::ProgramPtr m_program;
+
 	GLuint m_vao;
 	GLuint m_texture;
 

@@ -17,8 +17,9 @@ int main()
 		{ std::make_shared<glpp::Shader>(GL_FRAGMENT_SHADER, "shaders/fragment.glsl") }
 	});
 
+	render->setProgram(program);
 	while (!render->isStopped()) {
-		render->render(program);
+		render->render();
 	}
 
 	return 0;
