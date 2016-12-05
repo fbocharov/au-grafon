@@ -9,13 +9,15 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/vec2.hpp>
+
 namespace glpp
 {
 
 class Render
 {
 public:
-	Render(int width, int height, std::string const & name);
+	Render(int width, int height, std::string const & name, bool disableCursor = false);
 	virtual ~Render();
 
 	bool isStopped() const;
@@ -35,6 +37,9 @@ private:
 	virtual void onMouseMoved(double xpos, double ypos) = 0;
 	virtual void onMouseKeyPressed(int button, int action, int mods) = 0;
 	virtual void onMouseScroll(double xoffset, double yoffset) = 0;
+
+protected:
+	glm::vec2 const m_dimension;
 
 private:
 	GLFWwindow * m_window;

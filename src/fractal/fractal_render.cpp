@@ -53,7 +53,7 @@ void FractalRender::doRender()
 	m_program->setUniform("screen", { m_screenDimension.x, m_screenDimension.y });
 	m_program->setUniform("maxIterCount", { float(m_maxIters) });
 
-	glBindTexture(GL_TEXTURE_1D, m_texture);
+	glBindTexture(GL_TEXTURE_1D, *m_texture);
 	glBindVertexArray(m_vao);
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);

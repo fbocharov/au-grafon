@@ -7,7 +7,8 @@
 namespace glpp
 {
 
-Render::Render(int width, int height, std::string const & name)
+Render::Render(int width, int height, std::string const & name, bool disableCursor)
+	: m_dimension(width, height)
 {
 	if (GL_TRUE != glfwInit())
 		throw std::runtime_error("failed to initialize GLFW");
@@ -30,6 +31,9 @@ Render::Render(int width, int height, std::string const & name)
 		throw std::runtime_error("failed to initialize GLEW");
 	}
 
+	if (disableCursor)
+		glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 	glViewport(0, 0, width, height);
 }
 
@@ -45,9 +49,9 @@ bool Render::isStopped() const
 
 void Render::render()
 {
+	glfwPollEvents();
 	doRender();
 	glfwSwapBuffers(m_window);
-	glfwPollEvents();
 }
 
 void Render::setupCallbacks()
